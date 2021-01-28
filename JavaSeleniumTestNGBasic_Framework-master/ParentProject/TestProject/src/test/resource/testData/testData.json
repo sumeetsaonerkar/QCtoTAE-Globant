@@ -1,0 +1,51 @@
+{
+  "SearchFlight":{
+  	"Data":[
+    		[	
+      			{"from": "Chennai"},
+      			{"to": "Port Blair"},
+      			{"Date":"14/03/2021"}
+     		]
+    ]	
+ } , 
+    "TC001":{
+  	"Data":[
+    		[	
+      			{"username": "sssaonerkar19@gmail.com"},
+      			{"password": "Test7890"}
+     		]
+     		
+    ]	
+ } ,
+      "TC002":{
+  	"Data":[
+    		[	
+      			{"registername": "abhishek"},
+      			{"registeremail": "paramdadsena@gmail.com"},
+      			{"registerpassword" : "Test1234"}
+     		]
+     		
+    ]	
+ } ,
+      "TC003":{
+  	"Data":[
+    		[	
+      			{"username": "sssaonerkar19@gmail.com"},
+      			{"password": "Test7890"}
+      			
+     		]
+     		
+    ]	
+ } ,
+ 	   "TC004":{
+  	"Data":[
+    		[	
+      			{"username": "sssaonerkar19@gmail.com"},
+      			{"password": "Test7890"},
+      			{"friendEmailID" : "abc@gmail.com"}
+      			
+     		]
+     		
+    ]	
+ } 
+}
