@@ -28,6 +28,7 @@ public class InviteFriendTest extends BaseTest {
 		GoodReadsLogin login = TestOperationFactory.getOperation(GoodReadsLogin.class);
 		login.loginOperations(username, password);
 		login.friend(friendEmailID);
+		System.out.println("Hi");
 		
 	
 		
