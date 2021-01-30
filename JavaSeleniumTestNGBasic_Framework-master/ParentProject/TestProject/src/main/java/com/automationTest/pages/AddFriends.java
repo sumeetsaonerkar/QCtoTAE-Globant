@@ -38,6 +38,12 @@ public class AddFriends extends BasePage implements TestPage {
 	private WebElement InviteFriendButton;
 	
 	
+	@FindBy(xpath="//div[contains(text(),'Your invite was sent to')]")
+	private WebElement SnacksBarMsg;
+	
+	//div[contains(text(),'Your invite was sent to')]
+	
+	
 	
 	
 	public AddFriends inviteFriends(String friendEmailID) {
@@ -54,6 +60,11 @@ public class AddFriends extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(SearchButton));
 		SearchButton.click();
 		HiddenElement().InviteFriendButton.click();
+		wait.until(ExpectedConditions.visibilityOf(SnacksBarMsg));
+		
+		// work for pending request
+		
+		
 				return this;
 	}
 	

@@ -13,21 +13,23 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 
-public class InviteFriendTest extends BaseTest {
+public class RecommendBookTest extends BaseTest {
 	
 	
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Test Description: To validate Search Flight functionality.")
-	@DataSet("TC004")
+	@DataSet("TC005")
 	
 	
 	
-	public void inviteFrnd(String username, String password, String friendEmailID) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
+	public void Recommend(String username, String password, String bookname) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
 		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
 		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.friend(friendEmailID);
+		goodReadsCommon.book(bookname);
+		
+		
 		
 		
 	

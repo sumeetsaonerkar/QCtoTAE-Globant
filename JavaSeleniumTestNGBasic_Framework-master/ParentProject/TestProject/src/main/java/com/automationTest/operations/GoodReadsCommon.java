@@ -1,21 +1,23 @@
 package com.automationTest.operations;
 
-
-
-
 import com.automationTest.pages.AddFriends;
+import com.automationTest.pages.Explore;
 import com.automationTest.pages.GoodreadsLandingPage;
+import com.automationTest.pages.GroupsPage;
 import com.automationTest.pages.LoginPage;
+import com.automationTest.pages.ReadPage;
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.operation.IOperations;
 import com.framework.page.TestPageFactory;
 
-public class GoodReadsLogin implements IOperations {
+public class GoodReadsCommon implements IOperations {
 	
 	LoginPage loginPage;
 	GoodreadsLandingPage goodReadsLandingPage;
 	AddFriends addFriends;
-	
+	Explore explore;
+	GroupsPage groupsPage;
+	ReadPage readPage;
 	
 	public void loginOperations(String Uname, String Upwd) throws DriverNotInitializedException {
 		
@@ -54,4 +56,19 @@ public class GoodReadsLogin implements IOperations {
 		
 	}
 
+	public void book(String bookname) throws DriverNotInitializedException {
+		
+		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).sendRecommendation(bookname);
+	}
+	
+	public void groupNameChange(String groupame) throws DriverNotInitializedException {
+		
+		groupsPage = TestPageFactory.getPage(GroupsPage.class).editGroup(groupame);
+		
+	}
+	
+	public void wantToReadCount() throws DriverNotInitializedException {
+		
+		readPage = TestPageFactory.getPage(ReadPage.class).wantToRead();
+	}
 }

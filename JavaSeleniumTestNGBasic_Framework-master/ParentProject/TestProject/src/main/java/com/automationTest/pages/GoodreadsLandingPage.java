@@ -15,14 +15,16 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	
 	public GoodreadsLandingPage(WebDriver driver) throws DriverNotInitializedException {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	@FindBy(xpath="//a[@data-reactid='.2bly6fbvqps.1.0.2.0.0.0']")
-	private WebElement Home;
-	
-	@FindBy(xpath="//a[@data-reactid='.2bly6fbvqps.1.0.2.0.1.0']")
-	private WebElement MyBooks;
+	/*
+	 * @FindBy(xpath="//a[@data-reactid='.2bly6fbvqps.1.0.2.0.0.0']") private
+	 * WebElement Home;
+	 * 
+	 * @FindBy(xpath="//a[@data-reactid='.2bly6fbvqps.1.0.2.0.1.0']") private
+	 * WebElement MyBooks;
+	 */
 	
 	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[3]/div")
 	private WebElement Browse;
@@ -30,23 +32,48 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[3]/div//ul[@class='siteHeader__subNav']/li[2]")
 	private WebElement ChoiceAwards;
 	
-	@FindBy(xpath="//a[@data-reactid='.1n7wlueq7sw.1.0.2.0.3.0.0']/span")
-	private WebElement Community;
+	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[3]/div//ul[@class='siteHeader__subNav']/li[7]")
+	private WebElement Explore;
 	
 	@FindBy(className="searchBox__input searchBox__input--navbar")
 	private WebElement SearchBooks;
-	
-	@FindBy(xpath="//div[@class='genres_form']")
-	private WebElement GenresList;
-	
-	@FindBy(xpath="//li[@data-reactid='.gfwedtsvls.1.0.4.0.4.0.1.0.1.9']")
-	private WebElement FavouriteGenres;
 	
 	@FindBy(xpath="//div[@class='dropdown dropdown--profileMenu']")
 	private WebElement ClickProfileIcon;
 	
 	@FindBy(xpath="//div[@class='dropdown dropdown--profileMenu']/div/div/ul/li[13]")
 	private WebElement SignOutLink;
+	
+	@FindBy(id="explore_search_query")
+	private WebElement EnterBook;
+	
+	@FindBy(xpath="//div[@class='greyText fieldsToSearch']/input[@id='search_field_title']")
+	private WebElement TitleClick;
+	
+	@FindBy(xpath="//input[@class='searchBox__button searchBox--large__button']")
+	private WebElement Search;
+	
+	@FindBy(xpath="//span[text()='Getting Things Done: The Art of Stress-Free Productivity']")
+	private WebElement BookResults;
+	
+	
+	public GoodreadsLandingPage sendRecommendation(String bookname) {
+		
+	wait.until(ExpectedConditions.visibilityOf(Browse)).click();
+	wait.until(ExpectedConditions.visibilityOf(Explore)).click();
+	wait.until(ExpectedConditions.visibilityOf(TitleClick)).click();
+	wait.until(ExpectedConditions.visibilityOf(EnterBook)).click();
+	EnterBook.sendKeys(bookname);
+	wait.until(ExpectedConditions.visibilityOf(Search)).click();
+	wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+	
+	
+	
+
+	
+		
+		return this;
+	}
 	
 	public GoodreadsLandingPage signOut()
 	{

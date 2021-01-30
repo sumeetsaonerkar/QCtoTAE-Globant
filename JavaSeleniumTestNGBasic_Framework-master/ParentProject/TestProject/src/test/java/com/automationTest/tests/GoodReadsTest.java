@@ -2,8 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsLogin;
-import com.automationTest.pages.GoodreadsLandingPage;
+import com.automationTest.operations.GoodReadsCommon;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.operation.TestOperationFactory;
@@ -25,15 +24,10 @@ public class GoodReadsTest extends BaseTest {
 public void loginAccount(String username, String password) throws Exception {
 		
 		
-		GoodReadsLogin login = TestOperationFactory.getOperation(GoodReadsLogin.class);
-		login.loginOperations(username, password);
-		login.signOut();
+		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
+		goodReadsCommon.loginOperations(username, password);
+		goodReadsCommon.signOut();
 	
-		
-		
-		
-		
-		
 			
 	}
 
