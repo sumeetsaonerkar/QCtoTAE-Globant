@@ -1,5 +1,6 @@
 package com.automationTest.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,9 +33,11 @@ public class GroupsPage extends BasePage implements TestPage {
 	@FindBy(xpath="//div[@class='leftContainer']/div/div[1]/input[@id='group_title']")
 	private WebElement ChangegrpName;
 	
-	@FindBy(xpath="//div[@id='flashContainer']//a")
+	@FindBy(xpath="//div[@class='box noticeBox']//div")
 	private WebElement SnackBarMsg;
 	
+	@FindBy(xpath="//input[@class='gr-form__submitButton']")
+	private WebElement SaveButton;
 	
 	
 	
@@ -53,11 +56,20 @@ public class GroupsPage extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(ChangegrpName)).click();
 		wait.until(ExpectedConditions.visibilityOf(ChangegrpName)).sendKeys(groupname);
 		
-		Assert.assertEquals(oldName, false);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,500)");
+		
+		wait.until(ExpectedConditions.visibilityOf(SaveButton)).click();
+		
+		/*
+		 * String newName = GroupList.getText(); System.out.println(newName);
+		 */
 		
 		
+		String msg = SnackBarMsg.getText();
+		System.out.println(msg);
 		
-		
+		//Assert.assertEquals(oldName, newName);
 		
 		return this;
 	}
