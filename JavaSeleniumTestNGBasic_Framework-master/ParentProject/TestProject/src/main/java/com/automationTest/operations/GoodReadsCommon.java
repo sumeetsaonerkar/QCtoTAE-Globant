@@ -67,8 +67,8 @@ public class GoodReadsCommon implements IOperations {
 		
 	}
 	
-	public void wantToReadCount() throws DriverNotInitializedException {
+	public void wantToReadCount(String searchBook) throws DriverNotInitializedException {
 		
-		readPage = TestPageFactory.getPage(ReadPage.class).wantToRead();
+		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).wantToRead(searchBook);
 	}
 }

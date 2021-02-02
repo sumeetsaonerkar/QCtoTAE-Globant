@@ -32,9 +32,10 @@ public class ReadPage extends BasePage implements TestPage {
 	public ReadPage wantToRead()
 	{
 		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
-		wait.until(ExpectedConditions.visibilityOf(WantToRead)).click();
-		
-		
+		String abc = WantToRead.getText();
+		String a = abc.replaceAll("[^0-9]", "");
+		int oldNumber = Integer.parseInt(a);
+		System.out.println("old count for want to read is :- " +oldNumber);
 		
 		return this;
 	}

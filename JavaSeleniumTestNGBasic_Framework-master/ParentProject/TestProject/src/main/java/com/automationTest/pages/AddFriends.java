@@ -26,7 +26,7 @@ public class AddFriends extends BasePage implements TestPage {
 	private WebElement Friends;
 	
 	@FindBy(id="inviteLink")
-	private WebElement AddFriends;
+	private WebElement AddFriends;  
 	
 	@FindBy(xpath="//input[@class='gr-form--compact__input']")
 	private WebElement EnterFriendName;
@@ -34,7 +34,7 @@ public class AddFriends extends BasePage implements TestPage {
 	@FindBy(xpath="//input[@value='search members']")
 	private WebElement SearchButton;
 	
-	@FindBy(xpath="//a[text()='Add as a Friend']")
+	@FindBy(xpath="//input[@class='button smallButton']")
 	private WebElement InviteFriendButton;
 	
 	
@@ -61,6 +61,7 @@ public class AddFriends extends BasePage implements TestPage {
 		SearchButton.click();
 		HiddenElement().InviteFriendButton.click();
 		wait.until(ExpectedConditions.visibilityOf(SnacksBarMsg));
+		System.out.println(SnacksBarMsg.getText());
 		
 		// work for pending request
 		

@@ -18,13 +18,13 @@ public class WantToReadTest  extends BaseTest  {
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Test Description: To validate Search Flight functionality.")
-	@DataSet("TC001")
+	@DataSet("TC005")
 	
-	public void readBooksCount(String username, String password) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
+	public void readBooksCount(String username, String password, String bookName) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
 		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
 		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.wantToReadCount();
+		goodReadsCommon.wantToReadCount(bookName);
 	}
 
 }

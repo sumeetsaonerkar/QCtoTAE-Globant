@@ -1,11 +1,11 @@
 package com.automationTest.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.framework.base.PropertyLoader;
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.page.BasePage;
 import com.framework.page.TestPage;
@@ -56,6 +56,25 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//span[text()='Getting Things Done: The Art of Stress-Free Productivity']")
 	private WebElement BookResults;
 	
+	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[2]//a[text()='My Books']")
+	private WebElement MyBooks;
+	
+	@FindBy(xpath="//div[@id='paginatedShelfList']/div[3]/a")
+	private WebElement WantToRead;
+	
+	
+	@FindBy(xpath="//div[@id='1_book_1633']/div[1]")
+	private WebElement WantToReadButton;
+	
+	@FindBy(xpath="//a[text()='Recommend This Book']")
+	private WebElement RecommendButton;
+	
+	@FindBy(xpath="//a[text()='Recommend']")
+	private WebElement RecommendButton2;
+	
+	//a[text()='Recommend']
+	
+	
 	
 	public GoodreadsLandingPage sendRecommendation(String bookname) {
 		
@@ -66,14 +85,31 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	EnterBook.sendKeys(bookname);
 	wait.until(ExpectedConditions.visibilityOf(Search)).click();
 	wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+//	wait.until(ExpectedConditions.visibilityOf(ClickFirstBook)).click();
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	js.executeScript("window.scrollBy(0,250)");
+	wait.until(ExpectedConditions.visibilityOf(RecommendButton)).click();
+	wait.until(ExpectedConditions.visibilityOf(RecommendButton2)).click();
 	
 	
-	
-
-	
-		
 		return this;
 	}
+	
+	public GoodreadsLandingPage searchBook(String bookname) {
+		
+		wait.until(ExpectedConditions.visibilityOf(Browse)).click();
+		wait.until(ExpectedConditions.visibilityOf(Explore)).click();
+		wait.until(ExpectedConditions.visibilityOf(TitleClick)).click();
+		wait.until(ExpectedConditions.visibilityOf(EnterBook)).click();
+		EnterBook.sendKeys(bookname);
+		wait.until(ExpectedConditions.visibilityOf(Search)).click();
+		wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+		wait.until(ExpectedConditions.visibilityOf(WantToReadButton)).click();
+		
+		
+			return this;
+		}
+	
 	
 	public GoodreadsLandingPage signOut()
 	{
@@ -94,7 +130,30 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 		return this;
 	}
 	
-	
+	public GoodreadsLandingPage wantToRead(String bookname)
+	{
+		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
+		String abc = WantToRead.getText();
+		String a = abc.replaceAll("[^0-9]", "");
+		int oldNumber = Integer.parseInt(a);
+		System.out.println("old count for want to read is :- " +oldNumber);
+		wait.until(ExpectedConditions.visibilityOf(Browse)).click();
+		wait.until(ExpectedConditions.visibilityOf(Explore)).click();
+		wait.until(ExpectedConditions.visibilityOf(TitleClick)).click();
+		wait.until(ExpectedConditions.visibilityOf(EnterBook)).click();
+		EnterBook.sendKeys(bookname);
+		wait.until(ExpectedConditions.visibilityOf(Search)).click();
+		//wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+		wait.until(ExpectedConditions.visibilityOf(WantToReadButton)).click();
+		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
+		String xyz = WantToRead.getText();
+		String b = xyz.replaceAll("[^0-9]", "");
+		int newNumber = Integer.parseInt(b);
+		System.out.println("new count for want to read is :- " +newNumber);
+		
+		
+		return this;
+	}
 	
 	
 
