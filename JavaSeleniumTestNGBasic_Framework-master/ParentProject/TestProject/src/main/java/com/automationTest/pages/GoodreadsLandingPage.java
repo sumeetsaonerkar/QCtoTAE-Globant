@@ -121,14 +121,7 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 		return this;
 	}
 	
-	public GoodreadsLandingPage awardssss() {
-		
-		wait.until(ExpectedConditions.visibilityOf(Browse));
-		Browse.click();
-		wait.until(ExpectedConditions.visibilityOf(ChoiceAwards));
-		ChoiceAwards.click();
-		return this;
-	}
+	
 	
 	public GoodreadsLandingPage wantToRead(String bookname)
 	{

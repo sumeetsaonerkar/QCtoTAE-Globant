@@ -1,6 +1,8 @@
 package com.automationTest.operations;
 
 import com.automationTest.pages.AddFriends;
+import com.automationTest.pages.AwardsPage;
+import com.automationTest.pages.BooksPage;
 import com.automationTest.pages.Explore;
 import com.automationTest.pages.GoodreadsLandingPage;
 import com.automationTest.pages.GroupsPage;
@@ -18,6 +20,8 @@ public class GoodReadsCommon implements IOperations {
 	Explore explore;
 	GroupsPage groupsPage;
 	ReadPage readPage;
+	AwardsPage awards;
+	BooksPage booksPage;
 	
 	public void loginOperations(String Uname, String Upwd) throws DriverNotInitializedException {
 		
@@ -46,7 +50,7 @@ public class GoodReadsCommon implements IOperations {
 	public void awardsOperation() throws DriverNotInitializedException {
 		
 		
-		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).awardssss();
+		awards = TestPageFactory.getPage(AwardsPage.class).awardssss();
 		
 	}
 
@@ -71,4 +75,10 @@ public class GoodReadsCommon implements IOperations {
 		
 		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).wantToRead(searchBook);
 	}
+	
+	public void sortBooks() throws DriverNotInitializedException {
+		
+		booksPage = TestPageFactory.getPage(BooksPage.class).verifySort();
+	}
+	
 }

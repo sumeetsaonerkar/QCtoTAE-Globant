@@ -13,19 +13,24 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 
-public class AwardsTest extends BaseTest {
+public class BooksTest extends BaseTest {
 	
+
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Test Description: To validate awards category bagged in 2011 functionality.")
-	@DataSet("TC003")
+	@Description("Test Description: To validate books sorting functionality.")
+	@DataSet("TC001")
 	
-	public void awardsLogin(String username, String password) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
+	
+	
+	
+	public void verifyBookSorting(String username, String password) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
 		
 		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
 		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.awardsOperation();
+		goodReadsCommon.sortBooks();
+		
 	}
-	
+
 }
