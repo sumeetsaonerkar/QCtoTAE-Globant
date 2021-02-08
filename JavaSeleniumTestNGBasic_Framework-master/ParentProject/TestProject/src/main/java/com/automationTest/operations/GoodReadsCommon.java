@@ -47,6 +47,11 @@ public class GoodReadsCommon implements IOperations {
 		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).signOut();
 	}
 	
+	public boolean isLink()
+	{
+		return goodReadsLandingPage.isSignInLinkDisplayed();
+	}
+	
 	public void awardsOperation() throws DriverNotInitializedException {
 		
 		

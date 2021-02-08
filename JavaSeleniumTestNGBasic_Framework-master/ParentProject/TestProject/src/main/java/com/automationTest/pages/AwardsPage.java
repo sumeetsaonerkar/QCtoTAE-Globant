@@ -39,13 +39,8 @@ public class AwardsPage extends BasePage implements TestPage {
 	 * WebElement BooksList;
 	 */
 	@FindBys(@FindBy(xpath="//div[@class='categoryContainer']/div/a/h4"))
-
-    private List<WebElement> BooksList;
-	
-	
-
-	
-	
+	private List<WebElement> BooksList;
+		
 	
 public AwardsPage awardssss() {
 		

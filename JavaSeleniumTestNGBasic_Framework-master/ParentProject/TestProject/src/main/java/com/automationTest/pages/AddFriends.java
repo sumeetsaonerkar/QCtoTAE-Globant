@@ -34,14 +34,16 @@ public class AddFriends extends BasePage implements TestPage {
 	@FindBy(xpath="//input[@value='search members']")
 	private WebElement SearchButton;
 	
-	@FindBy(xpath="//input[@class='button smallButton']")
+	@FindBy(xpath="//a[text()='Add as a Friend']")
 	private WebElement InviteFriendButton;
 	
 	
 	@FindBy(xpath="//div[contains(text(),'Your invite was sent to')]")
 	private WebElement SnacksBarMsg;
 	
-	//div[contains(text(),'Your invite was sent to')]
+	
+	@FindBy(xpath="//span[@class='greyText']")
+	private WebElement ReqDetails;
 	
 	
 	
@@ -60,9 +62,18 @@ public class AddFriends extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(SearchButton));
 		SearchButton.click();
 		HiddenElement().InviteFriendButton.click();
-		wait.until(ExpectedConditions.visibilityOf(SnacksBarMsg));
-		System.out.println(SnacksBarMsg.getText());
 		
+		
+		/*
+		 * wait.until(ExpectedConditions.visibilityOf(ReqDetails));
+		 * System.out.println("status of friend request : -" + ReqDetails.getText());
+		 * 
+		 * 
+		 * 
+		 * wait.until(ExpectedConditions.visibilityOf(SnacksBarMsg));
+		 * System.out.println(SnacksBarMsg.getText());
+		 */
+		 
 		// work for pending request
 		
 		

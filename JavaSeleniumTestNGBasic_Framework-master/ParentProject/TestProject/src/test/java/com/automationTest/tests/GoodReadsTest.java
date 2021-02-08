@@ -11,6 +11,7 @@ import com.framework.test.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import junit.framework.Assert;
 
 public class GoodReadsTest extends BaseTest {
 	
@@ -27,6 +28,7 @@ public void loginAccount(String username, String password) throws Exception {
 		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
 		goodReadsCommon.loginOperations(username, password);
 		goodReadsCommon.signOut();
+		Assert.assertTrue(goodReadsCommon.isLink());
 	
 			
 	}

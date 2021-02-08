@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.page.BasePage;
@@ -23,22 +24,25 @@ public class BooksPage extends BasePage implements TestPage {
 	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[2]//a[text()='My Books']")
 	private WebElement MyBooks;
 	
-	/*
-	 * @FindBy(xpath="//a[contains(text(),'2011 AWARDS')]") private WebElement
-	 * Link2011;
-	 */
+	@FindBys(@FindBy(xpath="//select[@id='per_page']"))
+	private WebElement PagesElements;
 	
+	@FindBys(@FindBy(xpath="//select[@id='sort']/option"))
+	private List<WebElement> SortElements;
 	
+	@FindBy(xpath="//select[@id='sort']/option")
+	private WebElement SecondOption;
 	
-	
-	
-	
+		
 	
 	public BooksPage verifySort() {
 		
 		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
+		
+		Select selectPages = new Select(PagesElements);
+		selectPages.selectByIndex(2);
 		
 		
 		

@@ -72,7 +72,14 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//a[text()='Recommend']")
 	private WebElement RecommendButton2;
 	
-	//a[text()='Recommend']
+	
+
+	@FindBy(xpath="//div[text()='Recommended']")
+	private WebElement ConfirmationText;
+	
+	
+	@FindBy(xpath="//a[text()='Sign in again']")
+	private WebElement SignInAgainLink;
 	
 	
 	
@@ -90,6 +97,9 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	js.executeScript("window.scrollBy(0,250)");
 	wait.until(ExpectedConditions.visibilityOf(RecommendButton)).click();
 	wait.until(ExpectedConditions.visibilityOf(RecommendButton2)).click();
+	
+	String msg = wait.until(ExpectedConditions.visibilityOf(RecommendButton2)).getText();
+	System.out.println("book recommended to friend successfully" + msg);
 	
 	
 		return this;
@@ -118,10 +128,21 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 		ClickProfileIcon.click();
 		wait.until(ExpectedConditions.visibilityOf(SignOutLink));
 		SignOutLink.click();
+		
+		/*
+		 * Boolean b =
+		 * wait.until(ExpectedConditions.visibilityOf(SignInAgainLink)).isDisplayed();
+		 * System.out.println(b);
+		 */
 		return this;
 	}
 	
-	
+	public boolean isSignInLinkDisplayed()
+	{
+		
+		wait.until(ExpectedConditions.visibilityOf(SignInAgainLink));
+		return SignInAgainLink.isDisplayed();
+	}
 	
 	public GoodreadsLandingPage wantToRead(String bookname)
 	{
