@@ -3,6 +3,7 @@ package com.automationTest.pages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -70,16 +71,77 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	private WebElement RecommendButton;
 	
 	@FindBy(xpath="//a[text()='Recommend']")
-	private WebElement RecommendButton2;
-	
-	
+	private WebElement RecommendButton2;	
 
 	@FindBy(xpath="//div[text()='Recommended']")
 	private WebElement ConfirmationText;
-	
-	
+		
 	@FindBy(xpath="//a[text()='Sign in again']")
 	private WebElement SignInAgainLink;
+	
+	@FindBy(xpath="//div[@id='toolsSection']/a[text()='Reading Challenge']")
+	private WebElement ReadingChallengeLink;
+	
+	@FindBy(xpath="//div[@class='viewBooksHeader']/div")
+	private WebElement ChallengeText;
+	
+	@FindBy(xpath="//div[@class='wtrRight wtrUp']")
+	private WebElement WantToReadArrow;
+	
+	@FindBy(xpath="//button[@value='read']")
+	private WebElement ReadValue;
+	
+	@FindBy(xpath="//span[text()='One Day at Horrorland (Goosebumps, #16)']")
+	private WebElement BookFirst;
+	
+	@FindBy(xpath="//textarea[@id='review_review_usertext']")
+	private WebElement EnterReviewBox;
+		
+	@FindBy(xpath="//input[@class='gr-button']")
+	private WebElement PostReview;
+	
+	@FindBy(xpath="//a[@id='SAvpjhduigpp']")
+	private WebElement DateStart;
+	
+	@FindBy(xpath="//a[@id='EAvpjhduigpp']")
+	private WebElement DateFinish;
+	
+	
+	
+	
+public GoodreadsLandingPage reviewSearchedBook() {
+		
+	
+		Actions actions = new Actions(driver);
+		actions.moveToElement(WantToReadArrow).perform();
+		
+		wait.until(ExpectedConditions.visibilityOf(ReadValue)).click();
+		wait.until(ExpectedConditions.visibilityOf(EnterReviewBox)).sendKeys("nice book to read once");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,120)");
+		
+		wait.until(ExpectedConditions.visibilityOf(DateStart)).click();
+		wait.until(ExpectedConditions.visibilityOf(DateFinish)).click();
+		
+		wait.until(ExpectedConditions.visibilityOf(PostReview)).click();
+		
+		return this;
+	}
+	
+	public GoodreadsLandingPage readingChallenge() {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,250)");
+		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
+		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
+		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
+		System.out.println(ChallengeText.getText());
+		
+		
+		return this;
+	}
+	
 	
 	
 	
@@ -113,12 +175,22 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(EnterBook)).click();
 		EnterBook.sendKeys(bookname);
 		wait.until(ExpectedConditions.visibilityOf(Search)).click();
-		wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
-		wait.until(ExpectedConditions.visibilityOf(WantToReadButton)).click();
+		//wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+		wait.until(ExpectedConditions.visibilityOf(BookFirst)).click();
+		
 		
 		
 			return this;
 		}
+	
+	public GoodreadsLandingPage wantToReadButton()
+	{
+		wait.until(ExpectedConditions.visibilityOf(WantToReadButton)).click();
+		return this;
+	}
+	
+	
+	
 	
 	
 	public GoodreadsLandingPage signOut()

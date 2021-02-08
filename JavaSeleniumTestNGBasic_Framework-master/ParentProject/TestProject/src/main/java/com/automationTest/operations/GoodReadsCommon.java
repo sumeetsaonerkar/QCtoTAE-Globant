@@ -86,4 +86,12 @@ public class GoodReadsCommon implements IOperations {
 		booksPage = TestPageFactory.getPage(BooksPage.class).verifySort();
 	}
 	
+	public void challenge(String bookname) throws DriverNotInitializedException {
+		
+		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).readingChallenge()
+				.searchBook(bookname)
+				.reviewSearchedBook()
+				.readingChallenge();
+	}
+	
 }
