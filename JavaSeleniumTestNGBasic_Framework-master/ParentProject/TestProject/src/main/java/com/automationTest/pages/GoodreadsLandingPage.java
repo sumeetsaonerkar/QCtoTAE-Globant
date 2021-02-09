@@ -57,7 +57,7 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//span[text()='Getting Things Done: The Art of Stress-Free Productivity']")
 	private WebElement BookResults;
 	
-	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//ul/li[2]//a[text()='My Books']")
+	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//a[text()='My Books']")
 	private WebElement MyBooks;
 	
 	@FindBy(xpath="//div[@id='paginatedShelfList']/div[3]/a")
@@ -100,10 +100,10 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//input[@class='gr-button']")
 	private WebElement PostReview;
 	
-	@FindBy(xpath="//a[@id='SAvpjhduigpp']")
+	@FindBy(xpath="//div[@class='startedAtSetToday']/a")
 	private WebElement DateStart;
 	
-	@FindBy(xpath="//a[@id='EAvpjhduigpp']")
+	@FindBy(xpath="//div[@class='endedAtSetToday']/a")
 	private WebElement DateFinish;
 	
 	
@@ -129,14 +129,34 @@ public GoodreadsLandingPage reviewSearchedBook() {
 		return this;
 	}
 	
-	public GoodreadsLandingPage readingChallenge() {
+	public GoodreadsLandingPage readingChallengeBefore() {
 		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,250)");
-		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
+		/*
+		 * JavascriptExecutor js = (JavascriptExecutor) driver;
+		 * js.executeScript("window.scrollBy(0,250)");
+		 */
+		wait.until(ExpectedConditions.elementToBeClickable(MyBooks));
+		MyBooks.click();
+		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
+		
+		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
+		System.out.println("This was previous status of reading book challenge :- " + ChallengeText.getText());
+		
+		
+		return this;
+	}
+	
+public GoodreadsLandingPage readingChallengeAfter() {
+		
+		/*
+		 * JavascriptExecutor js = (JavascriptExecutor) driver;
+		 * js.executeScript("window.scrollBy(0,250)");
+		 */
+		wait.until(ExpectedConditions.elementToBeClickable(MyBooks));
+		MyBooks.click();
 		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
 		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
-		System.out.println(ChallengeText.getText());
+		System.out.println("This was current status of reading book challenge :- " +ChallengeText.getText());
 		
 		
 		return this;
