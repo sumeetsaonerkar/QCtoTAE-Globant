@@ -4,6 +4,7 @@ import com.automationTest.pages.AddFriends;
 import com.automationTest.pages.AwardsPage;
 import com.automationTest.pages.BooksPage;
 import com.automationTest.pages.Explore;
+import com.automationTest.pages.GenrePage;
 import com.automationTest.pages.GoodreadsLandingPage;
 import com.automationTest.pages.GroupsPage;
 import com.automationTest.pages.LoginPage;
@@ -22,6 +23,7 @@ public class GoodReadsCommon implements IOperations {
 	ReadPage readPage;
 	AwardsPage awards;
 	BooksPage booksPage;
+	GenrePage genrePage;
 	
 	public void loginOperations(String Uname, String Upwd) throws DriverNotInitializedException {
 		
@@ -93,5 +95,12 @@ public class GoodReadsCommon implements IOperations {
 				.reviewSearchedBook()
 				.readingChallengeAfter();
 	}
+	
+public void checkGenreOperation() throws DriverNotInitializedException {
+		
+	genrePage = TestPageFactory.getPage(GenrePage.class).verifyGenreFunctionality();
+	
+	}
+	
 	
 }
