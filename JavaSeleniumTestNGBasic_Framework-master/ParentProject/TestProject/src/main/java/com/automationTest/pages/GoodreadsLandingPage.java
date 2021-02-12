@@ -1,10 +1,13 @@
 package com.automationTest.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -106,8 +109,10 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	
 	@FindBy(xpath="//div[@class='endedAtSetToday']/a")
 	private WebElement DateFinish;
+
 	
-	
+	@FindBys(@FindBy(xpath="//a[@class='bookCoverTarget']"))
+	private List<WebElement> BookCount;
 	
 	
 public GoodreadsLandingPage reviewSearchedBook() {
@@ -130,7 +135,7 @@ public GoodreadsLandingPage reviewSearchedBook() {
 		return this;
 	}
 	
-	public GoodreadsLandingPage readingChallengeBefore() {
+	public GoodreadsLandingPage readingChallenge(String bookname) {
 		
 		/*
 		 * JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -140,8 +145,49 @@ public GoodreadsLandingPage reviewSearchedBook() {
 		MyBooks.click();
 		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
 		
+		int oldBookCnt = BookCount.size();
+		
+		
 		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
 		System.out.println("This was previous status of reading book challenge :- " + ChallengeText.getText());
+		
+		wait.until(ExpectedConditions.visibilityOf(Browse)).click();
+		wait.until(ExpectedConditions.visibilityOf(Explore)).click();
+		wait.until(ExpectedConditions.visibilityOf(TitleClick)).click();
+		wait.until(ExpectedConditions.visibilityOf(EnterBook)).click();
+		EnterBook.sendKeys(bookname);
+		wait.until(ExpectedConditions.visibilityOf(Search)).click();
+		//wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
+		wait.until(ExpectedConditions.visibilityOf(BookFirst)).click();
+		
+		Actions actions = new Actions(driver);
+		actions.moveToElement(WantToReadArrow).perform();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(ReadValue)).click();
+		wait.until(ExpectedConditions.visibilityOf(EnterReviewBox)).sendKeys("nice book to read once");
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,120)");
+		
+		wait.until(ExpectedConditions.visibilityOf(DateStart)).click();
+		wait.until(ExpectedConditions.visibilityOf(DateFinish)).click();
+		
+		wait.until(ExpectedConditions.visibilityOf(PostReview)).click();
+		
+		wait.until(ExpectedConditions.visibilityOf(Browse));
+		wait.until(ExpectedConditions.elementToBeClickable(MyBooks));
+		MyBooks.click();
+		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
+		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
+		System.out.println("This was current status of reading book challenge :- " +ChallengeText.getText());
+	//s	wait.until(ExpectedConditions.visibilityOf(BookCount));
+		
+		int newBookCnt = BookCount.size();
+		
+		Assert.assertEquals(newBookCnt, oldBookCnt+1);
+		
+		
+		
 		
 		
 		return this;
@@ -158,7 +204,9 @@ public GoodreadsLandingPage readingChallengeAfter() {
 		wait.until(ExpectedConditions.visibilityOf(ReadingChallengeLink)).click();
 		wait.until(ExpectedConditions.visibilityOf(ChallengeText));
 		System.out.println("This was current status of reading book challenge :- " +ChallengeText.getText());
+		wait.until(ExpectedConditions.visibilityOf((WebElement) BookCount));
 		
+		System.out.println(BookCount.size());
 		
 		return this;
 	}
@@ -167,7 +215,9 @@ public GoodreadsLandingPage readingChallengeAfter() {
 	
 	
 	public GoodreadsLandingPage sendRecommendation(String bookname) {
+	
 		
+	String Actual = "Recommend"	;
 	wait.until(ExpectedConditions.visibilityOf(Browse)).click();
 	wait.until(ExpectedConditions.visibilityOf(Explore)).click();
 	wait.until(ExpectedConditions.visibilityOf(TitleClick)).click();
@@ -182,7 +232,9 @@ public GoodreadsLandingPage readingChallengeAfter() {
 	wait.until(ExpectedConditions.visibilityOf(RecommendButton2)).click();
 	
 	String msg = wait.until(ExpectedConditions.visibilityOf(RecommendButton2)).getText();
-	System.out.println("book recommended to friend successfully" + msg);
+	System.out.println("book recommended to friend successfully -" + msg);
+	Assert.assertEquals(Actual, msg);
+	
 	
 	
 		return this;
@@ -258,6 +310,7 @@ public GoodreadsLandingPage readingChallengeAfter() {
 		int newNumber = Integer.parseInt(b);
 		System.out.println("new count for want to read is :- " +newNumber);
 		Assert.assertEquals(newNumber, oldNumber+1);
+		
 		
 		
 		

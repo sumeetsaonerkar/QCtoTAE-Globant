@@ -90,10 +90,8 @@ public class GoodReads implements IOperations {
 	
 	public void challenge(String bookname) throws DriverNotInitializedException {
 		
-		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).readingChallengeBefore()
-				.searchBook(bookname)
-				.reviewSearchedBook()
-				.readingChallengeAfter();
+		goodReadsLandingPage = TestPageFactory.getPage(GoodreadsLandingPage.class).readingChallenge(bookname);
+				
 	}
 	
 public void checkGenreOperation() throws DriverNotInitializedException {

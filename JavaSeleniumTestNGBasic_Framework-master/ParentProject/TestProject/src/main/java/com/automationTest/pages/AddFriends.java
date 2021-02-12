@@ -68,6 +68,8 @@ public class AddFriends extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(InviteFrndSnacksBarMsg));
 		System.out.println(InviteFrndSnacksBarMsg.getText());
 		
+		System.out.println(InviteFrndSnacksBarMsg.isDisplayed());
+		
 		
 		/*
 		 * wait.until(ExpectedConditions.visibilityOf(ReqDetails));

@@ -43,6 +43,8 @@ public class GroupsPage extends BasePage implements TestPage {
 	
 	public GroupsPage editGroup(String groupname) {
 		
+		String expected = "The group's data have been saved";
+		
 		wait.until(ExpectedConditions.visibilityOf(ClickProfileIcon)).click();
 		wait.until(ExpectedConditions.visibilityOf(Groups)).click();
 		
@@ -66,10 +68,10 @@ public class GroupsPage extends BasePage implements TestPage {
 		 */
 		
 		
-		String msg = SnackBarMsg.getText();
-		System.out.println(msg);
+		String actual = SnackBarMsg.getText();
+		System.out.println(actual);
 		
-		//Assert.assertEquals(oldName, newName);
+		Assert.assertEquals(actual, expected);
 		
 		return this;
 	}

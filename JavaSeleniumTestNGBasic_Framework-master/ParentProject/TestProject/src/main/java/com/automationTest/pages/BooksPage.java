@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.page.BasePage;
@@ -33,7 +34,8 @@ public class BooksPage extends BasePage implements TestPage {
 	@FindBy(xpath="//select[@id='sort']/option")
 	private WebElement SecondOption;
 	
-		
+	@FindBys(@FindBy(xpath="//table[@id='books']//tr"))
+	private List<WebElement> BooksList;
 	
 	public BooksPage verifySort() {
 		
@@ -44,7 +46,11 @@ public class BooksPage extends BasePage implements TestPage {
 		Select selectPages = new Select(PagesElements);
 		selectPages.selectByIndex(2);
 		
+		int pageNo = 30;
 		
+		int pageCount = BooksList.size();
+		
+		Assert.assertEquals(pageNo, pageCount-1);
 		
 		return this;
 	}
