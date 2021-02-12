@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.page.BasePage;
@@ -54,7 +55,7 @@ public class GoodreadsLandingPage extends BasePage implements TestPage {
 	@FindBy(xpath="//input[@class='searchBox__button searchBox--large__button']")
 	private WebElement Search;
 	
-	@FindBy(xpath="//span[text()='Getting Things Done: The Art of Stress-Free Productivity']")
+	@FindBy(xpath="//span[text()='Emergency Skin']")
 	private WebElement BookResults;
 	
 	@FindBy(xpath="//div[@class='siteHeader__topLine gr-box gr-box--withShadow']//a[text()='My Books']")
@@ -115,7 +116,7 @@ public GoodreadsLandingPage reviewSearchedBook() {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(WantToReadArrow).perform();
 		
-		wait.until(ExpectedConditions.visibilityOf(ReadValue)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(ReadValue)).click();
 		wait.until(ExpectedConditions.visibilityOf(EnterReviewBox)).sendKeys("nice book to read once");
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -239,8 +240,8 @@ public GoodreadsLandingPage readingChallengeAfter() {
 	public GoodreadsLandingPage wantToRead(String bookname)
 	{
 		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
-		String abc = WantToRead.getText();
-		String a = abc.replaceAll("[^0-9]", "");
+		String actualText = WantToRead.getText();
+		String a = actualText.replaceAll("[^0-9]", "");
 		int oldNumber = Integer.parseInt(a);
 		System.out.println("old count for want to read is :- " +oldNumber);
 		wait.until(ExpectedConditions.visibilityOf(Browse)).click();
@@ -252,10 +253,12 @@ public GoodreadsLandingPage readingChallengeAfter() {
 		//wait.until(ExpectedConditions.visibilityOf(BookResults)).click();
 		wait.until(ExpectedConditions.visibilityOf(WantToReadButton)).click();
 		wait.until(ExpectedConditions.visibilityOf(MyBooks)).click();
-		String xyz = WantToRead.getText();
-		String b = xyz.replaceAll("[^0-9]", "");
+		String expText = WantToRead.getText();
+		String b = expText.replaceAll("[^0-9]", "");
 		int newNumber = Integer.parseInt(b);
 		System.out.println("new count for want to read is :- " +newNumber);
+		Assert.assertEquals(newNumber, oldNumber+1);
+		
 		
 		
 		return this;

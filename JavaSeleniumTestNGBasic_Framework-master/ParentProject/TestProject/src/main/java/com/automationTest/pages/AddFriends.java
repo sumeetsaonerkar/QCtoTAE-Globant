@@ -32,9 +32,9 @@ public class AddFriends extends BasePage implements TestPage {
 	private WebElement EnterFriendName;
 	
 	@FindBy(xpath="//input[@value='search members']")
-	private WebElement SearchButton;
+	private WebElement SearchMemberButton;
 	
-	@FindBy(xpath="//a[text()='Add as a Friend']")
+	@FindBy(xpath="//input[@class='button smallButton']")
 	private WebElement InviteFriendButton;
 	
 	
@@ -44,6 +44,9 @@ public class AddFriends extends BasePage implements TestPage {
 	
 	@FindBy(xpath="//span[@class='greyText']")
 	private WebElement ReqDetails;
+	
+	@FindBy(xpath="//div[contains(text(),'Your invite was sent to')]")
+	private WebElement InviteFrndSnacksBarMsg;
 	
 	
 	
@@ -59,9 +62,11 @@ public class AddFriends extends BasePage implements TestPage {
 		wait.until(ExpectedConditions.visibilityOf(EnterFriendName));
 		EnterFriendName.click();
 		EnterFriendName.sendKeys(friendEmailID);
-		wait.until(ExpectedConditions.visibilityOf(SearchButton));
-		SearchButton.click();
-		HiddenElement().InviteFriendButton.click();
+		wait.until(ExpectedConditions.visibilityOf(SearchMemberButton));
+		SearchMemberButton.click();
+		HiddenElement();
+		wait.until(ExpectedConditions.visibilityOf(InviteFrndSnacksBarMsg));
+		System.out.println(InviteFrndSnacksBarMsg.getText());
 		
 		
 		/*

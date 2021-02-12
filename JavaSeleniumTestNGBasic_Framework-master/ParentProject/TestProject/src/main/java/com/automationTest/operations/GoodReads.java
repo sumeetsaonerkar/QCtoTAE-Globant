@@ -13,7 +13,7 @@ import com.framework.exceptions.DriverNotInitializedException;
 import com.framework.operation.IOperations;
 import com.framework.page.TestPageFactory;
 
-public class GoodReadsCommon implements IOperations {
+public class GoodReads implements IOperations {
 	
 	LoginPage loginPage;
 	GoodreadsLandingPage goodReadsLandingPage;

@@ -5,6 +5,17 @@
     <classes>
       <class name="com.automationTest.tests.GoodReadsTest"/>
        <class name="com.automationTest.tests.GoodReadsSignUp"/>
+        <class name="com.automationTest.tests.AwardsTest"/>
+         <class name="com.automationTest.tests.BooksTest"/>
+          <class name="com.automationTest.tests.GenreTest"/>
+           <class name="com.automationTest.tests.GroupTest"/>
+            <class name="com.automationTest.tests.InviteFriendTest"/>
+             <class name="com.automationTest.tests.ReadingChallengeTest"/>
+              <class name="com.automationTest.tests.RecommendBookTest"/>
+               <class name="com.automationTest.tests.WantToReadTest"/>
+               
+       
+       
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

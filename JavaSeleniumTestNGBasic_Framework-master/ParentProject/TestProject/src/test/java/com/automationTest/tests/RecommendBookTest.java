@@ -2,7 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsCommon;
+import com.automationTest.operations.GoodReads;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.exceptions.DriverNotInitializedException;
@@ -18,16 +18,16 @@ public class RecommendBookTest extends BaseTest {
 	
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Test Description: To validate Search Flight functionality.")
-	@DataSet("TC005")
+	@Description("Test Description: To validate Recommend book functionality.")
+	@DataSet("TC008")
 	
 	
 	
 	public void Recommend(String username, String password, String bookname) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
-		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
-		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.book(bookname);
+		GoodReads goodReads = TestOperationFactory.getOperation(GoodReads.class);
+		goodReads.loginOperations(username, password);
+		goodReads.book(bookname);
 		
 		
 		

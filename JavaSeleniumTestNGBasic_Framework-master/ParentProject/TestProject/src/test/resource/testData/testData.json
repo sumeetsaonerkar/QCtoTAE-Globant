@@ -20,9 +20,9 @@
       "TC002":{
   	"Data":[
     		[	
-      			{"registername": "abhishek"},
-      			{"registeremail": "paramdadsena@gmail.com"},
-      			{"registerpassword" : "Test1234"}
+      			{"registername": "aabhishek"},
+      			{"registeremail": "pasramdadsena@gmail.com"},
+      			{"registerpassword" : "Tests1234"}
      		]
      		
     ]	
@@ -42,7 +42,7 @@
     		[	
       			{"username": "sssaonerkar19@gmail.com"},
       			{"password": "Test7890"},
-      			{"friendEmailID" : "s.saonerkar35@gmail.com"}
+      			{"friendEmailID" : "rrasdhttmisortgfgfe06@gmail.com"}
       			
      		]
      		
@@ -78,6 +78,18 @@
       			{"username": "sssaonerkar19@gmail.com"},
       			{"password": "Test7890"},
       			{"bookname" : "One Day at Horrorland (Goosebumps, #16)"}
+      			
+     		]
+     		
+    ]	
+    },
+      
+      "TC008":{
+  	"Data":[
+    		[	
+      			{"username": "sssaonerkar19@gmail.com"},
+      			{"password": "Test7890"},
+      			{"bookname" : "Emergency Skin"}
       			
      		]
      		

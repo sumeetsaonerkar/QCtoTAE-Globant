@@ -2,7 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsCommon;
+import com.automationTest.operations.GoodReads;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.operation.TestOperationFactory;
@@ -16,17 +16,17 @@ public class GenreTest extends BaseTest {
 	
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Test Description: To validate Search Flight functionality.")
+	@Description("Test Description: To validate Search Genre favourite functionality.")
 	@DataSet("TC001")
 	
 	
 public void readingChallengeTC(String username, String password) throws Exception {
 		
 		
-		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
-		goodReadsCommon.loginOperations(username, password);
+		GoodReads goodReads = TestOperationFactory.getOperation(GoodReads.class);
+		goodReads.loginOperations(username, password);
 		
-		goodReadsCommon.checkGenreOperation();
+		goodReads.checkGenreOperation();
 		
 	
 

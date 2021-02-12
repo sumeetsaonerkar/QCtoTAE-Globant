@@ -2,7 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsCommon;
+import com.automationTest.operations.GoodReads;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.exceptions.DriverNotInitializedException;
@@ -18,15 +18,15 @@ public class GoodReadsSignUp extends BaseTest {
 
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Test Description: To validate Search Flight functionality.")
+	@Description("Test Description: To validate SignUp functionality.")
 	@DataSet("TC002")
 	
 	
 	public void signUpAccount(String registername, String registeremail, String registerpassword) throws DriverNotInitializedException, InstantiationException, IllegalAccessException {
 		
 		
-		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
-		goodReadsCommon.signUpOperations(registername, registeremail, registerpassword);
+		GoodReads goodReads = TestOperationFactory.getOperation(GoodReads.class);
+		goodReads.signUpOperations(registername, registeremail, registerpassword);
 		
 	
 	}

@@ -2,7 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsCommon;
+import com.automationTest.operations.GoodReads;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.exceptions.DriverNotInitializedException;
@@ -18,22 +18,17 @@ public class InviteFriendTest extends BaseTest {
 	
 	@Test(dataProvider= "TEST", dataProviderClass= GenericDataProvider.class)
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Test Description: To validate Search Flight functionality.")
+	@Description("Test Description: To validate Invite friend functionality.")
 	@DataSet("TC004")
 	
 	
 	
 	public void inviteFrnd(String username, String password, String friendEmailID) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
-		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
-		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.friend(friendEmailID);
-		
-		
-	
-		
-		
-		
+		GoodReads goodReads = TestOperationFactory.getOperation(GoodReads.class);
+		goodReads.loginOperations(username, password);
+		goodReads.friend(friendEmailID);
+
 	}
 
 }

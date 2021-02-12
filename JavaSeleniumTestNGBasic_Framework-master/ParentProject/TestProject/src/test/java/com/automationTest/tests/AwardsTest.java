@@ -2,7 +2,7 @@ package com.automationTest.tests;
 
 import org.testng.annotations.Test;
 
-import com.automationTest.operations.GoodReadsCommon;
+import com.automationTest.operations.GoodReads;
 import com.framework.dataProvider.DataSet;
 import com.framework.dataProvider.GenericDataProvider;
 import com.framework.exceptions.DriverNotInitializedException;
@@ -23,9 +23,9 @@ public class AwardsTest extends BaseTest {
 	public void awardsLogin(String username, String password) throws InstantiationException, IllegalAccessException, DriverNotInitializedException {
 		
 		
-		GoodReadsCommon goodReadsCommon = TestOperationFactory.getOperation(GoodReadsCommon.class);
-		goodReadsCommon.loginOperations(username, password);
-		goodReadsCommon.awardsOperation();
+		GoodReads goodReads = TestOperationFactory.getOperation(GoodReads.class);
+		goodReads.loginOperations(username, password);
+		goodReads.awardsOperation();
 	}
 	
 }
